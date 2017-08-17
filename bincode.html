@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+	<audio autoplay="autoplay">
+    <source src="http://www.fengxingkeji.cn/changan/mp3/6.mp3" type="audio/mpeg">
+    </audio>
+	<title>长安小饭堂</title>
+	<div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'><img src="image/tag.png"></div>
+	<div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'><img src="image/p1_leavehome.png"></div>
+	<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+	<title>Document</title>
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css">		
+	<script>
+		var URL = document.URL;		
+		var value = URL.split('?')[1];	
+		if(isNaN(value)) self.location="index.html";
+	</script>
+</head>
+<body>
+	<div class="page" id="page10">
+		<div class="p10_bg"></div>
+		<div class="share">立即转发，有福同享 <img id="arrow" src="image/p7/arrow.png"/></div>
+		<div id="sumbitSuccess"><strong>提交成功√</strong>
+		</div>
+		<div id="submitbutton"></div>
+		<div id="invite">德凯店6月25日清新启航，欢迎前来就餐。届时将短信通知获奖用户</div>
+		<img class="p10_code" src="image/p7/bincode.jpg">
+		<div class="p10_words1">长按关注 获取更多福利！</div>
+		<div class="p10_words2">龙首印象城-大唐西市-凯德广场</br>请选择就近店面用餐</div>
+		<!--<input class="p10_share" type="image" src="image/p7/p10_share.png" onclick="shareout()">
+		<div class="share" id="share1">
+			<img class="shareout" src="image/p7/sharewords.png">
+		</div>
+		-->
+	</div> 
+	<script type="text/javascript">
+		function shareout(){
+			var share = document.getElementById("share1");
+			share.style.display = "block";
+		}
+
+		function sharein(){
+			var share = document.getElementById("share1");
+			share.style.display = "none";
+		}
+		/*
+		var p10_share = document.getElementById("share1")
+		p10_share.addEventListener("touchstart", function(event){
+			sharein();
+		},false);
+		*/	
+		document.title="我坐时空机回到" + getCookieValue('returnDays') + "天前，这里有份霸王餐邀你一起享用。"; 
+		 function getCookieValue(cookieName)
+		{
+			var cookieValue = document.cookie;
+			var cookieStartAt = cookieValue.indexOf(""+cookieName+"=");
+			if(cookieStartAt==-1)
+			{
+				cookieStartAt = cookieValue.indexOf(cookieName+"=");
+			}
+			if(cookieStartAt==-1)
+			{
+				cookieValue = null;
+			}
+			else
+			{
+				cookieStartAt = cookieValue.indexOf("=",cookieStartAt)+1;
+				cookieEndAt = cookieValue.indexOf(";",cookieStartAt);
+				if(cookieEndAt==-1)
+				{
+					cookieEndAt = cookieValue.length;
+				}
+				cookieValue = unescape(cookieValue.substring(cookieStartAt,cookieEndAt));//解码latin-1
+			}
+			return cookieValue;
+		}
+	</script>
+</body>
+</html>

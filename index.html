@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+<audio autoplay="autoplay">
+<source src="http://www.fengxingkeji.cn/changan/mp3/1.mp3" type="audio/mpeg">
+</audio>
+<link href='http://cdn.webfont.youziku.com/webfonts/nomal/25482/19428/5766190af629d80d7c685f56.css' rel='stylesheet' type='text/css'/>
+<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/ >
+<title>长安小饭堂</title>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src='js/jquery.path.js'></script>
+<script type="text/javascript" src="js/changan.js"></script>
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/changan.css">
+<link rel="prefetch" href="rotate.html"/>
+
+</head>
+<body class="preload">
+<div class="page animated fadeOut" id="page1">
+	<div class="bg"></div>
+	<img src="image\p1_leavehome.png" class="cover p1_leavehome group1" id="leavehome"/>
+	<!--
+		<div class="cover p1_dinner group1" id="dinner"></div>
+		<div class="cover p1_plane" id="plane"></div>
+	-->
+	<img src="image\p1_dinner.png" class="cover p1_dinner group1" id="dinner"/>
+	<img src="image/p1_plane.png" class="cover p1_plane" id="plane">
+	<div class="p1_words group1" id="wenzi1">	
+		离家的时间越久，越想念。<br><br>想念亲人的温度和故乡的味道。
+	</div>
+</div>
+<div class="page" id="page2" >
+	<div class=" bg"></div>
+	<!--
+		<div class="cover p2_workout animated fadeIn"></div>
+		<div class="cover p2_meal animated fadeIn"></div>
+	-->
+	<img src="image\p2_workout.png" class="cover p2_workout animated fadeIn"/>
+	<img src="image\p2_meal.png" class="cover p2_meal animated fadeIn"/>
+	
+	<div class=" p2_plane"></div>
+	<div class=" p2_words animated fadeIn" id="wenzi2">
+		出差的日子越久，<br><br>越留恋。<br><br>留恋家里的三餐和<br><br>夜归的白粥。
+	</div>
+</div>
+<div class="page" id="page3" >
+	<div class="bg"></div>
+	<!--
+		<div class="cover p3_growup animated fadeIn" id="growup"></div>
+		<div class="cover p3_young animated fadeIn" id="young"></div>
+	-->
+
+	<img src="image\p3_growup.png" class="cover p3_growup animated fadeIn" id="growup"/>
+	<img src="image\p3_young.png" class="cover p3_young animated fadeIn" id="young"/>
+	
+	<div class="p3_plane"></div>
+	<div class="p3_words animated fadeIn" id="wenzi3">
+		长大的日子越久，越怀念。<br><br>怀念童年的天真和校园的梦想。
+	</div>
+</div>
+</body>
+	<script type="text/javascript">
+	var t_img; // 定时器
+	var isLoad = true; // 控制变量
+	
+	isImgLoad(function(){
+		mainBody();
+		// 加载完成
+	});
+
+	function mainBody(){	
+		$("body").removeClass("preload");
+		
+		$('.group1').each(function(){
+			// 找到为0就将isLoad设为false，并退出each
+			$(this).addClass("animated fadeIn");
+		});
+
+		setTimeout("picSwitch('page1','page2')", 9000);
+			
+		setTimeout(animationPic2,15000);
+			
+		setTimeout("picSwitch('page2','page3')", 17000);
+			
+		setTimeout(jump2TimeMachine, 24500);
+				
+		setTimeout(animate,3500);
+		
+		function animate()
+		{
+		  // $('.p1_plane').addClass('animated rotateInDownLeft');
+		  //plane.setAttribute("class","animated infinite rotateInDownLeft");
+		 // plane.style.display = "block";	
+			$('.p1_plane').css('display','block');	 
+		  var a = screen.height * 0.02,
+		  	  b = screen.height * 0.3375,
+		  	  c = screen.height * 0.38,
+		  	  d = screen.height * 0.80;
+		  var path = {
+					start: { x: a,y: b,angle: 329.107,length: 0.563 },
+					end: {x: c, y: d, angle: 325.440, length: 0.723 }
+				  };
+		  $('.p1_plane').animate(
+			  {
+				path : new $.path.bezier(path)
+			  },
+			  6000,
+			  animate
+			);
+		}
+	}
+	function jump2TimeMachine(){
+		location.href = "rotate.html";
+	}
+	function animationPic2(){
+		var Pic2 = document.getElementById("page2");
+		Pic2.setAttribute("class","page animated infinite fadeOut");
+	}
+	function isImgLoad(callback){
+		// 注意我的图片类名都是cover，因为我只需要处理cover。其它图片可以不管。
+		// 查找所有封面图，迭代处理
+		
+		$('.cover').each(function(){
+			// 找到为0就将isLoad设为false，并退出each
+			//console.log(this.complete);
+			
+			if(!this.complete){
+				isLoad = false;
+				return false;
+			}else{
+			
+			}
+		});
+		// 为true，没有发现为0的。加载完毕
+		if(isLoad){
+			clearTimeout(t_img); // 清除定时器
+			// 回调函数
+			callback();
+		// 为false，因为找到了没有加载完成的图，将调用定时器递归
+		}else{
+			isLoad = true;
+			t_img = setTimeout(function(){
+				isImgLoad(callback); // 递归扫描
+			},500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+		}
+	}	
+	</script>
+</html>
+	
+	

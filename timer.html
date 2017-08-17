@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+	<audio autoplay="autoplay">
+	<source src="http://www.fengxingkeji.cn/changan/mp3/3.mp3" type="audio/mpeg">
+	</audio>
+	<title>长安小饭堂</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/ >
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="prefetch" href="branding.html"/>
+	<script src="js\jquery-2.2.4.min.js"></script>
+</head>
+
+<body class="preload">
+	<style>
+	.preload{
+		display:none;
+	}
+	html
+	{	margin: 0;
+		padding: 0;
+		border: none;
+		font-size: 1.25vh;
+		font-family: 'xingjian';
+	}
+	body{height: 100%;overflow: hidden;margin: 0;}
+
+	@font-face
+	{
+		font-family: 'Kristen';
+		src: url('ITCKRIST.TTF');
+	}
+
+	@font-face
+	{
+		font-family: 'xingjian';
+		src: url('hyi2gjm.TTF');	
+	}
+		
+	body,div{margin:0;padding:0;}
+
+	span{
+		display:inline-block;
+		color:#000000;
+		width:20%;
+		height:4%;
+		line-height:2;
+		text-align:right;
+		margin:auto;
+		font-size: 2.5rem;
+		font-family: 'Kristen';
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	body {
+	  -webkit-animation-duration: 5s;
+	  -webkit-animation-delay: 9s;
+	  -webkit-animation-iteration-count: 1;
+	}	
+	.page{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+/*	#page4{
+	  -webkit-animation-duration: 5s;
+	  -webkit-animation-delay: 14s;
+	  -webkit-animation-iteration-count: 1;
+	}*/
+	#page4 > .p4_bg{
+		margin:0;
+		padding:0;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		/*
+		background: url("image/timeMachine/timebg2.png") 
+			no-repeat center center;
+		background-size:100%;
+		*/
+	}
+	#p4bg{
+	  -webkit-animation-duration: 3s;
+	  -webkit-animation-delay: 0s;
+	  -webkit-animation-iteration-count: infinite;
+	}
+	#page4 > #timeMachine {
+		position: absolute;
+		/*left: 9.3333vh;*/
+		/*left: 5.25vh;*/
+		/*top: 12.375vh;*/
+		left: 13.875vh;
+		top: 27.25vh;
+		/*width: 76.8889vh;*/
+		/*width: 43.25vh;*/
+		/*height: 38.375vh;*/
+		width: 28.875vh;
+		height: 23vh;
+		margin: auto;
+		background: url('image/timemachine.png')
+			no-repeat center center;
+		background-size: 100%;
+	  -webkit-animation-duration: 5s;
+	  -webkit-animation-delay: 0s;
+	  -webkit-animation-iteration-count: 1;
+	}
+	
+	#page4 > #clock {
+		position: absolute;
+		/*left: 14.4444vh;*/
+		left: 8.125vh;
+		top: 65.75vh;
+		/*width: 71.7778vh;*/
+		width: 40.375vh;
+		height: 22.125vh;
+		margin: auto;
+		background: url('image/timerl.png')
+			no-repeat center center;
+		background-size: 100%;
+		font-size: 2.5rem;
+		padding-top: 2vh;
+		padding-left: 5.0625vh;
+		/*padding-left: 9vh;*/
+		font-family: 'xingjian';
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	  -webkit-animation-duration: 2s;
+	  -webkit-animation-delay: 0s;
+	  -webkit-animation-iteration-count: infinite;
+	}
+	
+	#page4 > #leftDays {
+		position: absolute;
+		top: 52.75vh;
+		left:0;
+		right: 0;
+		/*width: 44.44444vh;*/
+		width: 42vh;
+		height: 12.375vh;
+		margin: auto;
+		background: url('image/timers1.png') 
+			no-repeat center center;
+		background-size: 100%;
+		font-size: 2.3rem;
+		font-family: 'xingjian';
+		text-align: left;
+		padding-left: 9vh;
+		/*padding-left: 16vh;*/
+	  -webkit-animation-duration: 1s;
+	  -webkit-animation-delay: 0s;
+	  -webkit-animation-iteration-count: infinite;
+	}
+	</style>
+	<div class="page" id="page4">
+		
+		<div class="p4_bg animated infinite pulse" id="p4bg">
+			<img class="cover" src="image\timeMachine\timebg2.png"/>
+		</div>	
+		
+		<div id="timeMachine" class="animated shake"></div>
+
+		<div id="leftDays" class="animated bounce">
+			<span id="spanday"></span>时光倒流天数
+		</div>
+
+		<div id="clock" class="animated shake">		
+			<span></span>年<span></span>月<span></span>日</p>
+			<span></span>时<span></span>分<span></span>秒
+		</div>
+	</div>
+<script>	
+	var t_img; // 定时器
+	var isLoad = true; // 控制变量
+	var img_vertical = Math.floor(window.screen.height * 0.2);	
+	var img_horizontal = parseInt(window.screen.width);
+	var img_verticalMove, img_horizontalMove;	
+	var moveCounter = 0;	
+	var nowDate = new Date();	
+	var currentAge, back2Age;	
+	var currentYear, returnYears;
+	var oClock = document.getElementById("clock");
+	var aSpan = oClock.getElementsByTagName("span");	
+	var currentTime = nowDate.getTime();	
+	var img_timeMachine = document.getElementById("timeMachine");	
+	var daySpan = document.getElementById("spanday");	
+	var revCounter = 0;	
+	var l = 0;
+    var d = 50;
+    var lmax = 1000;
+    var tmax = 200;
+	var i=60;
+	var hour = 23;
+	var date = 30;
+	var month = 12;
+	//set animation time = 8 sec;
+	var animationTime = 6;
+	var yearSpanTime=0
+	var returnDays=0,returnYear=0;
+	var daysPerSec=0;
+	var displayReturnDay;
+	var spanNumber;
+	var countDown = 20;
+	var yearPerSec; 
+	var displayYear;	
+	isImgLoad(function(){
+		mainBody();
+		// 加载完成
+	});
+		
+	function mainBody(){
+		$("body").removeClass("preload");
+		$("body").addClass("animated fadeOut");
+		function setAge(){
+			var URL = document.URL;		
+			var value = URL.split('?')[1];		
+			var ages = value.split('&');		
+			currentAge = ages[0].split('-')[1];		
+			back2Age = ages[1];		
+		}
+			
+		setAge();
+		getTimes();	
+		returnYear = currentYear - (parseInt(currentAge) - parseInt(back2Age));			
+				
+		caluateReturnDays();
+		var timeMachine = document.getElementById("timeMachine");						
+		setTimeout(img_outAmtate,4000);			
+		function img_outAmtate(){
+			timeMachine.setAttribute("class","animated 1 zoomOutRight");
+		}	
+		
+		//This animation is for clock
+		clockAnimation();	
+		secMinAnimation();	
+		hourAnimation();	
+		dateAnimation();	
+		monthAnimation();
+		returnDaysAnimation();
+
+	//caluate days which is need to return to returnYears
+	function caluateReturnDays(){	
+		var targetTime = (new Date(returnYear, nowDate.getMonth()+1, nowDate.getDate(), nowDate.getHours(), nowDate.getMinutes(), nowDate.getSeconds())).getTime();		
+		var offsetTime = currentTime - targetTime;		
+		offsetTime = Math.abs(offsetTime);		
+		returnDays = Math.floor(offsetTime / (3600 * 24 * 1e3));		
+		setCookie("returnDays",returnDays,1);	
+		displayReturnDay=returnDays;
+		caluateSpanNumbersPerSec();
+	}
+	
+	function caluateSpanNumbersPerSec(){
+		daysPerSec = returnDays / animationTime;
+		spanNumber=Math.floor(daysPerSec/50);	
+		yearsPerSec = (currentAge - back2Age) / animationTime;
+		if(yearsPerSec<1)yearSpanTime=Math.floor(1000/yearsPerSec)
+		else{yearsPerSec = Math.floor(yearsPerSec);}
+		displayYear = currentYear;
+	}
+	
+	function returnDaysAnimation(){				 
+		displayReturnDay = displayReturnDay - spanNumber;		
+		if(displayReturnDay>=50){
+			daySpan.innerHTML = displayReturnDay;
+			setTimeout(returnDaysAnimation,20);
+		}else if(displayReturnDay>0){
+			countDown = countDown+20;
+			daySpan.innerHTML = displayReturnDay;
+			setTimeout(returnDaysAnimation,countDown);
+		}else{
+			displayReturnDay = 0;
+			daySpan.innerHTML = displayReturnDay;
+			alert("从" + currentAge + "岁到" +  back2Age + "岁总共用了:" + returnDays + "天。");
+			location.href= 'branding.html';
+		}
+	}
+	
+	//year Animation
+	function clockAnimation(){	
+		var  c2b= currentAge - back2Age;
+			if(c2b>=9){
+				if(revCounter<8){
+				displayYear -= yearsPerSec;
+				aSpan[0].innerHTML = Math.floor(displayYear);
+				setTimeout(clockAnimation,1000);
+				revCounter +=1;
+				}else{
+					aSpan[0].innerHTML = returnYear;
+				}		
+			}else{
+				displayYear -= 1;
+				if(displayYear>returnYear){
+					yearSpanTime = yearSpanTime+200;							
+					aSpan[0].innerHTML = displayYear;
+					setTimeout(clockAnimation,yearSpanTime);
+				}else{
+					aSpan[0].innerHTML = returnYear;
+				}
+			}		
+	}
+	function secMinAnimation(){
+		if(i>0) i--;
+		else i=60;
+		aSpan[5].innerHTML = i;
+		aSpan[4].innerHTML = i;
+		setTimeout(secMinAnimation , 10);
+	}	
+
+	function hourAnimation(){
+		if(hour>0) hour--;
+		else hour=23;
+		aSpan[3].innerHTML = hour;
+		setTimeout(hourAnimation , 10);
+	}
+		
+	function dateAnimation(){
+		if(date>0) date--;
+		else date=30;
+		aSpan[2].innerHTML = date;
+		setTimeout(dateAnimation , 10);
+	}
+		
+	function monthAnimation(){
+		if(month>0) month--;
+		else month=12;
+		aSpan[1].innerHTML = month;
+		setTimeout(monthAnimation , 10);
+	}
+	
+	function getTimes (){		
+		currentYear = nowDate.getFullYear();		
+		var aDate = [nowDate.getFullYear(), nowDate.getMonth()+1, nowDate.getDate(), nowDate.getHours(), nowDate.getMinutes(), nowDate.getSeconds()];
+		for (var i in aDate) {
+			aSpan[i].innerHTML = format(aDate[i]);
+		}
+	}
+
+	function format(a){
+		return a.toString().replace(/^(\d)$/, "0$1");
+	}
+	
+	function setCookie(c_name,value,expiredays){
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate()+expiredays);
+		document.cookie=c_name+ "=" +escape(value)+
+		((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+	}
+	}
+	function isImgLoad(callback){
+		// 注意我的图片类名都是cover，因为我只需要处理cover。其它图片可以不管。
+		// 查找所有封面图，迭代处理
+		
+		$('.cover').each(function(){
+			// 找到为0就将isLoad设为false，并退出each
+			//console.log(this.complete);			
+			if(!this.complete){
+				isLoad = false;
+				return false;
+			}
+		});
+		// 为true，没有发现为0的。加载完毕
+		if(isLoad){
+			clearTimeout(t_img); // 清除定时器
+			// 回调函数
+			callback();
+		// 为false，因为找到了没有加载完成的图，将调用定时器递归
+		}else{
+			isLoad = true;
+			t_img = setTimeout(function(){
+				isImgLoad(callback); // 递归扫描
+			},500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+		}
+	}		
+</script>
+</body>	
+</html>

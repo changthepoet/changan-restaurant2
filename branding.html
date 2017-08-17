@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+<audio autoplay="autoplay">
+<source src="http://www.fengxingkeji.cn/changan/mp3/4.mp3" type="audio/mpeg">
+</audio>
+	<meta charset="UTF-8">
+	<title>长安小饭堂</title>
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<script src='js/jquery.path.js'></script>
+	<script type="text/javascript" src="js/shipei.js"></script>
+</head>
+<body class="preload">
+	<div class="page animated infinite fadeOut" id="page6">
+		<div class="p6_bg"></div>		
+		<img class="p6_pic1 cover" src="image/huiyi/shuihuka.png" id="pic1"/>
+		<img class="p6_pic2 cover" src="image/huiyi/guntiequan.png" id="pic2"/>
+		<img class="p6_pic3 cover" src="image/huiyi/jumpHouse.png" id="pic3"/>
+		<img class="p6_pic4 cover" src="image/huiyi/jump2.png" id="pic4"/>
+		<img class="p6_pic5 cover" src="image/huiyi/tanqiu.png" id="pic5"/>
+		<img class="p6_pic6 cover" src="image/huiyi/xiangpitang.png" id="pic6"/>
+		<img class="p6_pic7 cover" src="image/huiyi/dayouxi.png" id="pic7"/>		
+		<div id="p6_words1">
+			<h7><strong>时光易逝</strong></h7>
+		</div>
+		<div id="p6_words2">
+			<h7><strong>记忆永存</strong></h7>
+		</div>
+		<!--<div class="p6_plane"></div>-->
+	</div>
+	<div class="page animated fadeIn" id="page7">
+		<div class="p7_bg"></div>
+		<div class="p7_fantang animated fadeIn"></div>
+		<div class="p7_words animated fadeIn">
+		还好<br>，<br>有长安小饭堂陪你成长<br>。<br>
+		</div>
+		<div class="p7_yongcan">点此立即领取<strong>霸王餐</strong></div>
+		<input class="p7_button" id="p7_plane" type="image" value="陪我用餐" src="image/p7_plane.png" onclick="goPass('page7','page9');">
+	</div>
+	<div class="page" id="page9">
+		<img class="p9_bg" src="image/bg.png"/>		
+		<div class="p9_board"></div>		
+		<img src="image/p7/PAGE9_01.png" class="p9_logo"/>		
+		<form id="p9_form" action="bincode.html?2016" method="post" accept-charset="utf-8">
+			<strong>
+            姓名：<input required="required" class="blank" type="text" name="username" /><br><br>
+            电话：<input required="required" maxlength="11" minlength="11" class="blank" type="tel" name="telnum"/><br><br>
+            </strong></form>
+		<input class="tijiao" type="submit" value="提交" form="p9_form"/>
+		<div class="p9_words2">
+		<strong>[开业福利]<br>1、届时长安小饭堂将短信邀约100位小伙伴进店品鉴，享受双人霸王餐一份，请准确填写个人信息。<br>2、加入堂粉，成为创始会员，享更多福利(限量版珍藏菜品优惠册、吉祥物钥匙扣、专属搪瓷杯、限量版会员卡)</strong>
+		</div>
+		<div class="p9_address">
+			<strong>
+				长安小饭堂凯德广场店：<br>西安市南二环凯德广场负一层
+			</strong>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var t_img; // 定时器
+	var isLoad = true; // 控制变量
+	var Plane = document.getElementById("p7_plane");
+	function animationchange(){
+		Plane.setAttribute("class","p7_button animated fadeIn");
+		Plane.style.display="block";
+	}	
+	isImgLoad(function(){
+		mainBody();
+		// 加载完成
+	});	
+	function goPass(nowPage, lastPage){
+		var P7 = document.getElementById(nowPage);
+		var P9 = document.getElementById(lastPage);
+		P7.style.display = "none";
+		P9.style.display = "block";
+	};	
+	function init(){			
+			$(".p6_pic1").addClass("animated rotateInUpLeft");
+			$(".p6_pic2").addClass("animated rollIn");
+			$(".p6_pic3").addClass("animated fadeIn");
+			$(".p6_pic4").addClass("animated rotateInDownLeft");
+			$(".p6_pic5").addClass("animated zoomIn");
+			$(".p6_pic6").addClass("animated fadeIn");
+			$(".p6_pic7").addClass("animated lightSpeedIn");
+			$("#p6_words1").addClass("animated fadeInUp");
+			$("#p6_words2").addClass("animated fadeInUp");
+			$(".p7_yongcan").addClass("animated fadeIn");
+	}
+	function mainBody(){	
+		$("body").removeClass("preload");
+		init();
+		setTimeout("goPass('page6', 'page7')",9000);
+		setTimeout("animationchange()",17000);
+		setTimeout(function(){
+			Plane.setAttribute("class","p7_button animated bounce")
+			},19000);
+	}	
+	function isImgLoad(callback){	
+		$('.cover').each(function(){			
+			if(!this.complete){
+				isLoad = false;
+				return false;
+			}else{		
+			}
+		});
+		if(isLoad){
+			clearTimeout(t_img); 		
+			callback();
+		}else{
+			isLoad = true;
+			t_img = setTimeout(function(){
+				isImgLoad(callback); // 递归扫描
+			},500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+		}
+	}	
+	</script>
+</body>
+</html>

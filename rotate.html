@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<audio autoplay="autoplay">
+		<source src="http://www.fengxingkeji.cn/changan/mp3/2.mp3" type="audio/mpeg">
+		</audio>
+		<title>长安小饭堂</title>
+		<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/ >
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/fakeLoader.css">
+		<link rel="prefetch" href="timer.html"/>
+		<script src="js/jquery-2.2.4.min.js"></script>
+		<script src="js/fakeLoader.min.js"></script>	
+		<div id="fakeLoader"></div>
+	<style>
+		html
+		{
+		margin: 0;
+		padding: 0;
+		border: none;
+		font-size: 1.25vh;
+		font-family:'Kristen';
+		}
+		 body{z-index:-3;height: 100%; overflow: hidden;margin: 0;}
+
+		 @font-face
+		{
+			font-family: 'Kristen';
+			src: url('ITCKRIST.TTF');
+		}
+
+		@font-face
+		{
+			font-family: 'xingjian';
+			src: url('hyi2gjm.TTF');
+		}
+		 .bg{
+		 	position: absolute;
+		 	width: 100%;
+		 	height: 100%;
+		 	margin: auto;
+		 	background: url("image/bg.png") no-repeat center center;
+		 	background-size: 100%;
+		 	z-index: -2;
+  		 -webkit-animation-duration: 3.5s;
+  	  	 -webkit-animation-delay: 0s;
+		 -webkit-animation-iteration-count: 1;				
+		 }
+		.bg > .bgwords{
+			position: absolute;
+			top: 1vh;
+			left: 1vh;
+			width: 10vh;
+			height: 10vh;
+			font-size: 1.8rem;
+			text-align: center;
+			font-family: 'xingjian';
+			background: url("image/timeMachine/shuben2.png")
+			 no-repeat center center;
+			background-size: 100%;
+		}
+		.bgwords >.bginwords{
+			position: absolute;
+			top: 7vh;
+		}
+		.bg > .machineBody{
+			position: absolute;
+			/*left: 5.3333%;*/
+			left: 3vh;
+			top: 3.375vh;
+			/*width: 87.7778vh;*/
+			width: 49.375vh;
+			height: 89.125vh;
+			margin: auto;
+			background:url("image/timeMachine/MACHINE_BODY.png") no-repeat center center;
+			background-size: 100%;
+			z-index: -1;
+		}
+		.bg > #NowAge{
+			position: absolute;
+			/*left: 21.5556vh;*/
+			left: 12.125vh;
+			top: 36.375vh;
+			/*width: 28.8889vh;*/
+			width: 16.25vh;
+			height: 6.75vh;
+			margin: auto;
+			z-index: 1;
+			/*
+			background: url("image/timeMachine/SCREEN_LEFT.png")
+				no-repeat center center;
+			background-size: 100%;
+			*/
+			padding-top: 1.4vh;
+			text-align: center;
+			font-size: 3rem;
+			color: #3a3930;
+			font-family:'Kristen';
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;: 
+		}
+		.bg > #div_NowAge{
+			position: absolute;
+			/*left: 21.5556vh;*/
+			left: 12.125vh;
+			top: 36.375vh;
+			/*width: 28.8889vh;*/
+			width: 16.25vh;
+			height: 6.75vh;
+			margin: auto;
+			z-index: 2;
+			/*
+			background: url("image/timeMachine/SCREEN_LEFT.png")
+				no-repeat center center;
+			background-size: 100%;
+			*/
+			padding-top: 1.5vh;
+			text-align: center;
+			font-size: 3rem;
+			color: #3a3930;
+			font-family:'Kristen';
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;: 
+		}		
+		.agenow{
+			display:none;
+			position: absolute;
+			/*left: 26.4444vh;*/
+			left: 14.875vh;
+			top: 46.125vh;
+			/*width: 17.7778vh;*/
+			width: 10vh;
+			height: 5.625vh;
+			margin: auto;
+			background: url('image/timeMachine/BUTTON_LEFT.png')
+				no-repeat center center;
+			background-size: 100%;
+			border: none;
+		}
+		.bg > .words1{
+			position: absolute;
+			/*left: 27.4444vh;*/
+			left: 14.4375vh;
+			top: 51.75vh;
+			margin: auto;
+			color: #000000;
+			font-size: 2.3rem;
+			font-family: 'xingjian';
+		}
+		.bg > #div_BackAge{
+			position: absolute;
+			/*left: 54.88889vh;*/
+			left: 30.875vh;
+			top: 35.375vh;
+			/*width: 29.1111vh;*/
+			width: 16.375vh;
+			height: 7.75vh;
+			margin: auto;
+			/*
+			background: url("image/timeMachine/SCREEN_RIGHT.png")
+				no-repeat center center;
+			background-size: 100%;
+			*/
+			padding-top: 2vh;
+			text-align: center;
+			font-size: 3rem;
+			color: #3a3930;
+			font-family:'Kristen';
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;: 
+		}		
+		.bg > #BackAge{
+			position: absolute;
+			/*left: 54.88889vh;*/
+			left: 30.875vh;
+			top: 35.375vh;
+			/*width: 29.1111vh;*/
+			width: 16.375vh;
+			height: 7.75vh;
+			margin: auto;
+			/*
+			background: url("image/timeMachine/SCREEN_RIGHT.png")
+				no-repeat center center;
+			background-size: 100%;
+			*/
+			padding-top: 1.5vh;
+			text-align: center;
+			font-size: 3rem;
+			color: #3a3930;
+			font-family:'Kristen';
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;: 
+		}
+		.ageback{
+			position: absolute;
+			/*left: 57.7778vh;*/
+			left: 32.5vh;
+			top: 46.125vh;
+			/*width: 20.2222vh;*/
+			width: 11.375vh;
+			height: 5.625vh;
+			margin: auto;
+			background: url('image/timeMachine/BUTTON_RIGHT.png')
+				no-repeat center center;
+			background-size: 100%;
+			border: none;
+		}
+		.bg >.words2{
+			position: absolute;
+			/*left: 56.7778vh;*/
+			left: 30.9375vh;
+			top: 51.75vh;
+			margin: auto;
+			color: #000000;
+			font-size: 2.05rem;
+			font-family: 'xingjian';
+		}
+		#rudder{
+			position: absolute;
+			/*left:24.4444vh;*/
+			left: 11.75vh;
+			top: 57vh;
+			/*width: 24vh;*/
+			width: 16vh;
+			height: 16.149vh;
+			margin: auto;
+			border-radius: 50%;
+			/*z-index: 3;*/
+			/*
+			background: url("image/rudder.png")
+				no-repeat center center;
+			background-size: 100%;
+			*/
+			-webkit-animation-duration: 5s;
+			-webkit-animation-delay: 2s;
+			-webkit-animation-iteration-count: 1;
+		}
+		#start{
+			position: absolute;
+			/*left:59.5556vh;*/
+			left: 33.5vh;
+			top:60.875vh;
+			/*width:16.6667vh; 	*/
+			width: 9.375vh;
+			height:8.875vh;
+			margin: auto;
+			background: url("image/timeMachine/START.png")
+				no-repeat center center;
+			background-size: 100%;
+			border: none;
+		}
+		body{
+  		 -webkit-animation-duration: 1.5s;
+  	  	 -webkit-animation-delay: 0s;
+		 -webkit-animation-iteration-count: 1;		
+		}
+		.body_cover{
+			position: absolute;
+		 	width: 100%;
+		 	height: 100%;
+		 	margin: auto;
+		 	background: url("image/bg.png") no-repeat center center;
+		 	background-size: 100%;
+		 	z-index: -1;
+		}
+		#right_ActiveBtn{
+			position: absolute;
+			/*left: 57.7778vh;*/
+			left: 32.5vh;
+			top: 46.125vh;
+			/*width: 20.2222vh;*/
+			width: 11.375vh;
+			height: 5.625vh;
+			margin: auto;
+			background: url('image/timeMachine/BUTTON_RIGHT_2.png')
+				no-repeat center center;
+			background-size: 100%;
+			border: none;
+			display:none;
+		}
+		#left_ActiveBtn{
+			position: absolute;
+			/*left: 26.4444vh;*/
+			left: 14.875vh;
+			top: 46.125vh;
+			/*width: 17.7778vh;*/
+			width: 10vh;
+			height: 5.625vh;
+			margin: auto;
+			background: url('image/timeMachine/BUTTON_LEFT_2.png')
+				no-repeat center center;
+			background-size: 100%;
+			border: none;
+		}		
+		.bg > #intro{
+			display:none;
+			position: absolute;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			opacity: .8;
+			z-index: 3;
+		}
+		#intro_words{
+			position: absolute;
+			left: 5vh;
+			top: 20vh;
+			width: 45.5vh;
+			height: 39.75vh;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="bgwords" id="p5_bgwords">
+		<p class="bginwords">点击查看<br>使用说明</p>
+		</div>
+
+			<div>
+				<input id="start" type="button"  src="image/timeMachine/START.png" onclick="toTimer();"/>
+			</div> 	
+			<div>					
+				<input class="agenow" type="button" onClick="btn_NowAge()" id="left_NegBtn"/>
+				<input type="button" id="left_ActiveBtn"/>
+			</div>
+			<div class="words1">我的年龄</div>
+			<div>	
+				<input class="ageback" type="button" onClick="btn_BackAge()" id="right_NegBtn"/>
+				<input type="button" id="right_ActiveBtn"/>
+			</div>
+			<div class="words2">想回到的年龄</div>
+			<img class="machineBody cover" src="image/timeMachine/MACHINE_BODY.png"/>
+			<img class="cover" id="NowAge" src="image/timeMachine/SCREEN_LEFT.png"/>
+			<div id="div_NowAge">25</div>
+			<img class="cover" id="BackAge" src="image/timeMachine/SCREEN_RIGHT.png"/>
+			<div id="div_BackAge">20</div>
+			<img class="cover" id="rudder" src="image/rudder.png"/> 
+			<div id="intro">
+				<img id="intro_words" src="image/timeMachine/intro.png">
+			</div>
+		</div>
+	<script>
+    $("#fakeLoader").fakeLoader({   
+            timeToHide:999999, //Time in milliseconds for fakeLoader disappear
+            zIndex:999, // Default zIndex
+            spinner:"spinner6",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7' 
+            bgColor:"#2ecc71", //Hex, RGB or RGBA colors           
+    });
+	//right_NegBtn right_ActiveBtn  left_NegBtn left_ActiveBtn
+	var t_img; // 定时器
+	var isLoad = true; // 控制变量
+	var rudder = document.getElementById("rudder");		
+	var nowAge = document.getElementById("div_NowAge");	
+	var backA = document.getElementById("div_BackAge");	
+	var right_NegBtn = document.getElementById("right_NegBtn");	
+	var right_ActiveBtn = document.getElementById("right_ActiveBtn");	
+	var left_NegBtn = document.getElementById("left_NegBtn");	
+	var left_ActiveBtn = document.getElementById("left_ActiveBtn");	
+	var currentObject;
+
+	function btn_NowAge(){ 				
+		currentObject = nowAge;	
+		left_ActiveBtn.style.display = "block";
+		left_NegBtn.style.display = "none";
+		right_NegBtn.style.display = "block";
+		right_ActiveBtn.style.display = "none";		
+	}	
+	function btn_BackAge(){ 				
+		currentObject = backA;	
+		left_NegBtn.style.display = "block";
+		left_ActiveBtn.style.display = "none";
+		right_ActiveBtn.style.display = "block";
+		right_NegBtn.style.display = "none";
+	}
+	
+	function toTimer(){  
+		var  NowAge =parseInt(nowAge.innerHTML); 
+		var  BackAge =parseInt(backA.innerHTML);  
+		location.href = "timer.html?Age-" + NowAge + "&" + BackAge;     
+	}  	
+
+	function finish(){
+		 $("#fakeLoader").fakeLoader({   
+			timeToHide:500, //Time in milliseconds for fakeLoader disappear
+            zIndex:999, // Default zIndex
+            spinner:"spinner6",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7' 
+            bgColor:"#2ecc71", //Hex, RGB or RGBA colors				
+		});
+		setTimeout("mainBody()",500);
+	}
+	
+	isImgLoad(function(){
+		finish();
+		// 加载完成
+	});
+
+	function mainBody(){
+		$(".bg").addClass("animated rollIn");			
+		var rotate_angle = 20;	
+		var angle_now = 0;	
+		var img_center;
+		currentObject = nowAge;
+		
+	function myRotate(degree){	
+		angle_now += degree;		
+		angle_now = angle_now%360;		
+		var rotation = "rotate(" + angle_now + "deg)";		
+		rudder.style.transform=rotation;		
+		dragging = false;	
+		var limitBackAge = parseInt(nowAge.innerHTML);		
+		var oldAge = parseInt(backA.innerHTML);	
+		var old_value = parseInt(currentObject.innerHTML);		
+		if(degree>=1 && old_value<=119 && oldAge<limitBackAge){
+			currentObject.innerHTML = old_value + 1;
+		} 		
+		if(degree<=-1 && old_value>=1 && oldAge<limitBackAge) {
+			currentObject.innerHTML = old_value - 1;
+		}			
+		if(oldAge==limitBackAge){
+			alert("你被时间警察捉到了，不许窥视未来！！");
+			if(currentObject.id == "div_NowAge"){
+				currentObject.innerHTML = old_value + 3;
+			}else{
+				currentObject.innerHTML = old_value - 3;
+			}			
+		}
+	}	
+	var img_centerX = rudder.offsetLeft + (rudder.offsetWidth/2);	
+	var img_centerY = rudder.offsetTop + (rudder.offsetHeight/2);	
+	var startX,startY;	
+	var endX,endY;	
+	var dragging = false;
+		
+	rudder.addEventListener('touchstart', function(e) { 		
+		e.preventDefault();
+		var whichArt = e.target;		
+		if (e.targetTouches.length == 1) { 		
+			var touch = e.touches[0];		
+			startX = touch.pageX;			
+			startY = touch.pageY;					
+		} 
+	}, false);
+
+	rudder.addEventListener('touchmove',function(e){	
+		dragging = true;		
+		e.preventDefault();		
+		if (e.targetTouches.length == 1) { 	
+			touch = e.touches[0];					
+			endX = touch.pageX;		
+			endY = touch.pageY;						
+		}		
+	}, false);
+	
+	//arctan(4/3)=0.927295(弧度)
+	//180°=π弧度
+	//1弧度=180/π°
+	//0.927295弧度≈0.927295*180/3.14159=53.13°	
+	function angleSwitch(number){
+		return	Math.floor((number * 180)/Math.PI);
+	}
+	
+	setInterval(angleCalculator, 120);
+	
+	//θ=arctan[(y2-y0)/(x2-x0)]-arctan[(y1-y0)/(x1-x0)]
+	function angleCalculator(){
+		if(dragging == true){
+			var angle1 =  (endY-img_centerY)/(endX-img_centerX);
+			var angle2 =  (startY-img_centerY)/(startX-img_centerX);
+			angle1 = Math.atan(angle1);
+			angle2 = Math.atan(angle2);
+			//var check_angle = (angle1 - angle2)%3;
+			//var angle = angleSwitch(check_angle);
+			var angle = angleSwitch(angle1 - angle2);			
+			startX = endX;
+			startY = endY;		
+			if(!isNaN(angle)) {
+				myRotate(angle);
+			}
+		}			
+	}
+}
+	function isImgLoad(callback){
+		// 注意我的图片类名都是cover，因为我只需要处理cover。其它图片可以不管。
+		// 查找所有封面图，迭代处理
+		
+		$('.cover').each(function(){
+			// 找到为0就将isLoad设为false，并退出each
+			//console.log(this.complete);
+			
+			if(!this.complete){
+				isLoad = false;
+				return false;
+			}
+		});
+		// 为true，没有发现为0的。加载完毕
+		if(isLoad){
+			clearTimeout(t_img); // 清除定时器
+			// 回调函数
+			callback();
+		// 为false，因为找到了没有加载完成的图，将调用定时器递归
+		}else{
+			isLoad = true;
+			t_img = setTimeout(function(){
+				isImgLoad(callback); // 递归扫描
+			},500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+		}
+	}	
+
+
+	var bgwords = document.getElementById("p5_bgwords");
+	var intro = document.getElementById("intro");
+	
+	bgwords.addEventListener("touchstart", function(event){
+			intro.style.display = "block";
+	},false);
+	intro.addEventListener("touchstart", function(event){
+			intro.style.display = "none";
+	},false);
+</script>
+
+</body>
+</html>

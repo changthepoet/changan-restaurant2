@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<script type="text/javascript"  src="js/jquery-2.2.4.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+	<head>
+	</head>
+	<body>
+		
+		<div id="div_table">
+		</div>
+		
+		<script>	
+			var counter=0;		
+			$.getJSON('mingdan.json', function(data){ 
+				$.each(data, function(i, field){
+					counter += 1;																			
+					$("#div_table").append("#" + counter + ", " + field.username + ", " + field.telnum + "</P>");
+				});
+			}); 	
+		</script>
+	</body>
+</html>
